@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  react:
+    build:
+      context: ../
+      dockerfile: ./docker/ReactImage
+    ports:
+      - "80:80"
+  mysql: 
+    image: mysql:latest
+    environment:
+      - MYSQL_PASSWORD=Vicent.1234
+      - MYSQL_USER=vicent
+      - MYSQL_ROOT_PASSWORD=!P4ssW0rd
+      - MYSQL_DATABASE=greenwheels
+    ports:
+      - 3306:3306
+  django:
+    build:
+      context: ../
+      dockerfile: ./docker/PythonImage
+
+    ports:
+      - "50:8000"
+    restart: always

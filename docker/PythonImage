@@ -1,0 +1,9 @@
+FROM python:latest
+WORKDIR /Backend
+COPY ../Backend/ /Backend/
+RUN python -m venv .venv
+RUN chmod +x .venv/bin/activate
+RUN . .venv/bin/activate
+RUN pip install -r requirements.txt
+
+CMD python manage.py runserver 0.0.0.0:8000
