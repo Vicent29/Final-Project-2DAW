@@ -20,9 +20,6 @@ import './App.css';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-// bootstrap
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
 
 // fontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -44,7 +41,7 @@ const Profile = React.lazy(() => import("./pages/User/Profile"))
 
 function App() {
   return (
-    <div className="App">
+    <div  >
       <BrowserRouter>
         <AuthContextProvider>
           <Header />

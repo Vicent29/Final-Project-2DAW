@@ -1,13 +1,12 @@
 import React from "react";
 import UserLine from "./UserLine";
-import "./User.scss";
 
 export default function UserTable({users, changeStatus}) {
   return (
-    <div className="d-flex justify-center overflow-auto h-[80vh]">
-      <table className="mytable table table-striped lg:col-10 md:col-12 text-center bg-light mt-4">
-        <thead className="sticky top-0" >
-          <tr className="grey"fixed>
+    <div  >
+      <table  >
+        <thead   >
+          <tr  fixed>
             <th>ID</th>
             <th>Img</th>
             <th>FName</th>

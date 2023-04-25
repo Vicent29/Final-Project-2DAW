@@ -11,19 +11,19 @@ export default function Profile() {
   return (
     <>
       <section>
-        <div className="container py-5">
-          <div className="row justify-content-center">
-            <div className="col-lg-4">
-              <div className="card mb-4">
-                <div className="card-body  bg-gray-300 rounded  text-center">
+        <div  >
+          <div  >
+            <div  >
+              <div  >
+                <div  >
                   <UpdateUser />
                 </div>
               </div>
             </div>
             {/* Rent Profile or User Admin */}
             {!user.opt_profile && (
-              <div className="col-lg-8 h-[80vh] overflow-auto">
-                <div className="card mb-4 bg-dark">
+              <div  >
+                <div  >
                     {isAdmin && (
                       <UserAdminProfile />
                     )}
@@ -36,8 +36,8 @@ export default function Profile() {
             {/* Incident */}
             {user.opt_profile && (
               <>
-                <div className="col-lg-8 h-[80vh]">
-                  <div className="card mb-4 bg-black ">
+                <div  >
+                  <div  >
                     <Incident />
                   </div>
                 </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRent } from "../../hooks/useRent";
 import { useSlots } from "../../hooks/useSlots";
-import "./User.scss";
 
 export default function UserRentProfile() {
     const { rents, getRentsByUser, closeRent } = useRent();

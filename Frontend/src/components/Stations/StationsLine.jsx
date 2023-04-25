@@ -27,9 +27,9 @@ export default function StationLine({ station, deleteStation, updateStation }) {
                     <td className='align'>{station.long}</td>
                     <td className='align'>{station.lat}</td>
                     <td className='align'><img src={station.img ? station.img : "https://www.seekpng.com/png/detail/305-3050927_png-file-svg-bike-parking-icon-png.png"} alt="img_bike_rent" className='img_bike_admin rounded-circle img-fluid' /></td>
-                    <td scope="col" className="btns">
-                        <button type="button" className="btn btn-outline-success border-radius mr-3" onClick={() => setcheckUpdate(true)}>Update</button>
-                        <button type="button" className="btn btn-outline-danger border-radius ml-3" onClick={() => deleteStation(station.id)}>Delete</button>
+                    <td scope="col"  >
+                        <button type="button"   onClick={() => setcheckUpdate(true)}>Update</button>
+                        <button type="button"   onClick={() => deleteStation(station.id)}>Delete</button>
                     </td>
                 </>
             )}
@@ -40,9 +40,9 @@ export default function StationLine({ station, deleteStation, updateStation }) {
                     <td className='align'>{<input autoComplete='off' className='text-center col-4 bg-transparent' type="text" {...register("long")} placeholder={station.long} />}</td>
                     <td className='align'><input autoComplete='off' className='text-center col-4 bg-transparent' type="text" {...register("lat")} placeholder={station.lat} /></td>
                     <td className='align'><input className='text-center bg-transparent' type="text" {...register("img")} placeholder={station.img} /></td>
-                    <td scope="col" className="btns">
-                        <button type="button" className="btn btn-outline-success border-radius mr-3" onClick={Update_fields}>Update</button>
-                        <button type="button" className="btn btn-outline-danger border-radius ml-3" onClick={(e) => deleteStation(station.id)}>Delete</button>
+                    <td scope="col"  >
+                        <button type="button"   onClick={Update_fields}>Update</button>
+                        <button type="button"   onClick={(e) => deleteStation(station.id)}>Delete</button>
                     </td>
                 </>
             )}

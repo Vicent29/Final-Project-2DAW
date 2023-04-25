@@ -1,4 +1,3 @@
-import "./Header.scss"
 import { useLocation } from 'react-router-dom'
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
@@ -28,28 +27,28 @@ export default function Header() {
 
     return (
         <>
-            <div className="header" id="header">
-                <div className="logo"><Link to="Home"><img src="/assets/logos/graygreenwheels.png" alt="greenwheels" width="200vh" /></Link></div>
-                <div className="header-profile">
+            <div id="header">
+                <div ><Link to="Home"><img src="/assets/logos/graygreenwheels.png" alt="greenwheels" width="200vh" /></Link></div>
+                <div >
                     {user && (
                         <>
                             <Notifications />
-                            <Link to="profile"><img className="profile-img" src={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" /></Link>
+                            <Link to="profile"><img csrc={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" /></Link>
                         </>
                     )}
                 </div>
-                <div className="header-menu">
+                <div >
                     {isAdmin && (
                         <Announce />
                     )}
                     {print}
-                    <div className="hd:hidden text-white">
-                        <FontAwesomeIcon icon="fa-solid fa-bars" className="text-2xl" onClick={() => setShow(!show)} />
+                    <div >
+                        <FontAwesomeIcon icon="fa-solid fa-bars"  onClick={() => setShow(!show)} />
                     </div>
                 </div>
             </div>
             {show && (
-                <div className="d-flex flex-col justify-end hd:hidden bg-dark muestra" id="header">
+                <div  id="header">
                     {print.map((p) => {
                         return p
                     })}

@@ -9,7 +9,7 @@ export default function MyMap({ markers = [], clickonMap, setshow }) {
     const [selectedMarkerIndex, setSelectedMarkerIndex] = useState(null);
 
     return (
-        <div className="map300x300  text-black">
+        <div  >
             <Map
                 mapboxAccessToken="pk.eyJ1Ijoic2FudGlpbWFydGluZXoiLCJhIjoiY2t6eWZlYzk2MGIyOTJ2cDdxc2dmcDkxaSJ9.IhYesNObwvyMWu_nQQQoiw"
                 initialViewState={{
@@ -43,7 +43,7 @@ export default function MyMap({ markers = [], clickonMap, setshow }) {
                         onClose={() => { setSelectedMarkerIndex(null); setshow(null) }}
                         anchor="top"
                     >
-                        <div className="text-black">
+                        <div  >
                             <b>{markers[selectedMarkerIndex].bikes}</b>  bikes available
                             <br />
                             <img src={markers[selectedMarkerIndex].img} alt="img" />

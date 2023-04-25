@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import "./Bike.scss";
 
 export default function BikesLine({ bike, slots, deleteBike, changeStatusBike, updateBike}) {
     const [checkUpdate, setcheckUpdate] = useState(false);
@@ -29,7 +28,7 @@ export default function BikesLine({ bike, slots, deleteBike, changeStatusBike, u
             {checkUpdate && (
                 <>
                    <td className='align'>
-                        <select name="" id="" className="bg-transparent text-center" {...register("slot_id", { required: true })}>
+                        <select name="" id=""  {...register("slot_id", { required: true })}>
                             <option value="" className="text-black">None</option>
                             {slots.map((slot) => {
                                 return <option key={slot.id} value={slot.id} className="text-black">{slot.id} {slot.slug}</option>

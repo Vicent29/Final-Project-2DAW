@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import "./incident.scss"
 import { useBikes } from "../../hooks/useBikes"
 import { useSlots } from "../../hooks/useSlots"
 import { useIncident } from "../../hooks/useIncident"
@@ -38,18 +37,18 @@ export default function Incident() {
         <>
             <div className='all_incident'>
                 <div className='text-white'>
-                    <div className="container-fluid">
+                    <div  >
                         <br /><br />
-                        <ul className="list-unstyled multi-steps">
+                        <ul  >
                             {prueba}
                         </ul>
                     </div>
                     <form className='d-flex justify-center align-items-center formclass' onSubmit={handleSubmit(newPage)}>
-                        <div className="w-full max-w-xs">
-                            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <div  >
+                            <div  >
                                 {step === 0 && (
-                                    <div className="mb-4">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div  >
+                                        <label  >
                                             Incident
                                         </label>
                                         <select name="" id="" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -61,8 +60,8 @@ export default function Incident() {
                                     </div>
                                 )}
                                 {step === 1 && form.incident === "bike" && (
-                                    <div className="mb-4">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div  >
+                                        <label  >
                                             Bike
                                         </label>
                                         <select name="" id="" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -74,8 +73,8 @@ export default function Incident() {
                                     </div>
                                 )}
                                 {step === 1 && form.incident === "slot" && (
-                                    <div className="mb-4">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div  >
+                                        <label  >
                                             Slot
                                         </label>
                                         <select name="" id="" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -87,8 +86,8 @@ export default function Incident() {
                                     </div>
                                 )}
                                 {step === 1 && form.incident === "other" && (
-                                    <div className="mb-4">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div  >
+                                        <label  >
                                             Location
                                         </label>
 
@@ -97,23 +96,23 @@ export default function Incident() {
                                     </div>
                                 )}
                                 {step === 2 && (
-                                    <div className="mb-4">
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div  >
+                                        <label  >
                                             Description
                                         </label>
                                         <input name="" id="" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                             {...register("desc", { required: true })} placeholder="don't works" autoComplete="off" required />
                                     </div>
                                 )}
-                                <div className="flex items-center justify-between">
-                                    <button type='button' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                <div  >
+                                    <button type='button'  
                                         onClick={(e) => handleStep(-1)}>Prev</button>
                                     {step !== 2 && (
-                                        <button type='button' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        <button type='button'  
                                             onClick={handleSubmit(newPage)}>Next</button>
                                     )}
                                     {step === 2 && (
-                                        <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        <button type='submit'  
                                             onClick={handleSubmit(createIncidence)}>Send</button>
                                     )}
                                 </div>

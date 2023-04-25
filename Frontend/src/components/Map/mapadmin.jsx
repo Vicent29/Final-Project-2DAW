@@ -27,7 +27,7 @@ export default function MyMap({ onclickmap }) {
     }
 
     return (
-        <div className="map300x300">
+        <div  >
             <Map
                 mapboxAccessToken="pk.eyJ1Ijoic2FudGlpbWFydGluZXoiLCJhIjoiY2t6eWZlYzk2MGIyOTJ2cDdxc2dmcDkxaSJ9.IhYesNObwvyMWu_nQQQoiw"
                 initialViewState={{
