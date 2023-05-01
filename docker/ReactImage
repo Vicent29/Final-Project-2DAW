@@ -1,7 +1,7 @@
 FROM node:14-alpine AS builder
 
 WORKDIR /Frontend
-COPY ../Frontend /Frontend/
+COPY ./Frontend /Frontend/
 RUN npm install
 RUN npm run build
 
