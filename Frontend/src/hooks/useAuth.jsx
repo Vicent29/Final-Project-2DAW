@@ -7,6 +7,9 @@ import JWTService from '../services/JWTService';
 
 import { toast } from 'react-toastify';
 
+import {authFirebase, google} from "../services/firebase/firebase.config";
+
+
 
 export function useAuth() {
     const navigate = useNavigate();
@@ -44,6 +47,18 @@ export function useAuth() {
                 }
             });
     }, [setStatus]);
+
+
+    const signinGoogle = () => {
+        authFirebase.signInWithPopup(google).then(respuesta => {
+        console.log(respuesta.user);
+
+       }).catch(err=> {
+        console.log(err);
+       })
+
+    };
+
 
     const setUserLoged = useCallback((res) => {
         setStatus({ loading: false, error: false });
@@ -140,7 +155,7 @@ export function useAuth() {
         }); 
     },[])
 
-    return { status, signup, signin, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
+    return { status, signup, signin, signinGoogle, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
 }
 
 
