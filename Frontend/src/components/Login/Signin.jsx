@@ -4,11 +4,7 @@ import { useAuth } from '../../hooks/useAuth'
 
 export default function Signin() {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const { signin,signinGoogle, status } = useAuth();
-
-    const infoGoogle =  () => {
-        auth
-    }
+    const { signin,socialLogin} = useAuth();
 
     return (
         <div className="login-box login">
@@ -45,7 +41,13 @@ export default function Signin() {
                         SignIn
                     </button>
                 </form>
-                <button onClick={signinGoogle} className="m-3 bg-gray-900 text-white">Google</button>
+                <div className="d-flex">
+                    <button onClick={() => socialLogin('google')} className="m-3 bg-gray-900 text-white">G</button>
+                    <button  onClick={() => socialLogin('facebook')} className="m-3 bg-gray-900 text-white">F</button>
+                    <button  onClick={() => socialLogin('twitter')} className="m-3 bg-gray-900 text-white">T</button>
+                    <button  onClick={() => socialLogin('github')} className="m-3 bg-gray-900 text-white">Git</button>
+                </div>
+              
             </div>
         </div>
     )

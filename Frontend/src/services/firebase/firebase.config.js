@@ -1,22 +1,23 @@
-import firebase from "firebase/app";
-import { initializeApp, auth } from "firebase/app";
-// import "firebase/auth";
-// import "firebase/firestore";
-
+import {initializeApp} from "firebase/app";
+import {getAuth, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, GithubAuthProvider  } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBrUjYVSxnVwclEqOmiMV093tRBM-c6cgU",
-  authDomain: "bicycle-rental-5da54.firebaseapp.com",
-  projectId: "bicycle-rental-5da54",
-  storageBucket: "bicycle-rental-5da54.appspot.com",
-  messagingSenderId: "57515908039",
-  appId: "1:57515908039:web:140995ecdab185561617e2",
+  apiKey: process.env.REACT_APP_FIREBASE_VITE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_VITE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_VITE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_VITE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_VITE_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_VITE_APPID,
 };
 
 //Inicializar firebase
 
-const app = firebase.initializeApp(firebaseConfig);
-const authFirebase = app.auth();
-const google = new authFirebase.GoogleAuthProvider();
+const fire = initializeApp(firebaseConfig);
+const auth = getAuth(fire);
+const providerGoogle = new GoogleAuthProvider();
+const providerFacebook = new FacebookAuthProvider();
+const providerTwitter = new TwitterAuthProvider();
+const providerGithub = new GithubAuthProvider();
 
-export { authFirebase, google };
+
+export { auth, providerGoogle, providerFacebook, providerTwitter, providerGithub };

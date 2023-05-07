@@ -7,7 +7,9 @@ import JWTService from '../services/JWTService';
 
 import { toast } from 'react-toastify';
 
-import {authFirebase, google} from "../services/firebase/firebase.config";
+import { auth, providerGoogle, providerFacebook, providerTwitter, providerGithub } from "../services/firebase/firebase.config";
+import {signInWithPopup} from "firebase/auth";
+
 
 
 
@@ -49,14 +51,38 @@ export function useAuth() {
     }, [setStatus]);
 
 
-    const signinGoogle = () => {
-        authFirebase.signInWithPopup(google).then(respuesta => {
-        console.log(respuesta.user);
+    const socialLogin = (rrss) => {
+      let provider =
+        rrss == "google"
+          ? providerGoogle
+          : rrss == "facebook"
+          ? providerFacebook
+          : rrss == "twitter"
+          ? providerTwitter
+          : rrss == "github"
+          ? providerGithub
+          : null;
 
-       }).catch(err=> {
-        console.log(err);
-       })
-
+      signInWithPopup(auth, provider)
+        .then((info) => {
+          AuthService.loginSocialLogin(info.user)
+            .then((res) => {
+                console.log("RESPUESTA SOCIAL LOGIN");
+                console.log(res);
+            //   setUserLoged(res);
+            })
+            .catch((error) => {
+                console.log("ERROR SOCIAL LOGIN");
+                console.log(error);
+                // setStatus({ loading: false, error: true });
+            });
+        })
+        .catch((err) => {
+          toast.error("Warning with Social Login", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          setStatus({ loading: false });
+        });
     };
 
 
@@ -155,7 +181,7 @@ export function useAuth() {
         }); 
     },[])
 
-    return { status, signup, signin, signinGoogle, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
+    return { status, signup, signin, socialLogin, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
 }
 
 
