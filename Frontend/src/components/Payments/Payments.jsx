@@ -22,9 +22,9 @@ const Payments = () => {
                 },
             ],
             mode: 'payment',
-            successUrl: `http://localhost:3000/success`,
+            successUrl: `http://localhost:3000`,
             cancelUrl: `http://localhost:3000/cancel`,
-            customerEmail: 'customer@email.com',
+            
         });
         console.warn(error.message);
     }

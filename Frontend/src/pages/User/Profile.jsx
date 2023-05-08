@@ -4,6 +4,7 @@ import UserRentProfile from '../../components/User/UserRentProfile';
 import UserAdminProfile from '../../components/User/UserAdminProfile';
 import AuthContextProvider from '../../context/AuthContext';
 import Incident from "../../components/Incident/Incident";
+import Payments from "../../components/Payments/Payments";
 
 export default function Profile() {
   const { isAdmin, user } = useContext(AuthContextProvider)
@@ -46,6 +47,7 @@ export default function Profile() {
           </div>
         </div>
       </section>
+      <Payments/>
     </>
   );
 }
