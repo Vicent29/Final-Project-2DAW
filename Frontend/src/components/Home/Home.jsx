@@ -5,12 +5,13 @@ import { useBikes } from "../../hooks/useBikes";
 import { useStations } from "../../hooks/useStations";
 import { useRent } from "../../hooks/useRent";
 import "./home.scss"
+import {useTranslation} from "react-i18next";
 
 export default function HomeComponent() {
     const { stations } = useStations()
     const { bikes, setBikes, getBikesByStation } = useBikes()
     const { createRent } = useRent()
-
+    const {t, i18n} = useTranslation()
     const [show, setshow] = useState(null);
 
     const createRnt = async (data) => {
@@ -36,6 +37,7 @@ export default function HomeComponent() {
                 <div data-bs-spy="scroll" data-bs-offset="0" tabIndex="0" className="text-white d-flex flex-column justify-center align-middle col-12 col-lg-6 lg:height-80 overflow-auto p-3">
                     <h1>About us</h1>
                     <p>
+                        {t("title")}
                         Greenwheels is an online bike rental company that offers modern and reliable bikes for your daily use.
                         All bicycles have an attractive and practical design, as well as being resistant and easy to use.
                         With Greenwheels, you can quickly and easily rent a bike, enjoy a sustainable form of transportation,
