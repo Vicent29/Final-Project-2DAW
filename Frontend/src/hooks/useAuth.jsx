@@ -88,13 +88,6 @@ export function useAuth() {
                     setStatus({ loading: false });
                 });
         })
-        .catch((err) => {
-            console.log(err);
-          toast.warning("Warning with Social Login", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-          setStatus({ loading: false });
-        });
     };
 
 
