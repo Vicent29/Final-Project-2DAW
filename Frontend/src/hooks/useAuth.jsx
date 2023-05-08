@@ -10,9 +10,6 @@ import { toast } from 'react-toastify';
 import { auth, providerGoogle, providerFacebook, providerTwitter, providerGithub } from "../services/firebase/firebase.config";
 import {signInWithPopup} from "firebase/auth";
 
-
-
-
 export function useAuth() {
     const navigate = useNavigate();
     const { user, loadUser, checkAdmin, setJWT, setUser, setIsAdmin } = useContext(AuthContextProvider)
@@ -63,22 +60,37 @@ export function useAuth() {
           ? providerGithub
           : null;
 
+
       signInWithPopup(auth, provider)
         .then((info) => {
-          AuthService.loginSocialLogin(info.user)
-            .then((res) => {
-                console.log("RESPUESTA SOCIAL LOGIN");
-                console.log(res);
-            //   setUserLoged(res);
-            })
-            .catch((error) => {
-                console.log("ERROR SOCIAL LOGIN");
-                console.log(error);
-                // setStatus({ loading: false, error: true });
-            });
+            let uid = info.user.uid;
+            let email = info.user.email;
+            let first_name= info.user.displayName.split(" ")[0];
+            let last_name = info.user.displayName.split(" ");
+            last_name = last_name.slice(1).join(" ");
+            let img_user = info.user.photoURL;
+
+            let infoUser = {
+                uid: uid,
+                email: email,
+                first_name: first_name,
+                last_name: last_name,
+                img_user: img_user
+            };
+            AuthService.loginSocialLogin(infoUser)
+                .then((res) => {
+                    setUserLoged(res);
+                })
+                .catch(() => {
+                    toast.error("Social Login is disaable", {
+                        position: toast.POSITION.TOP_RIGHT,
+                    });
+                    setStatus({ loading: false });
+                });
         })
         .catch((err) => {
-          toast.error("Warning with Social Login", {
+            console.log(err);
+          toast.warning("Warning with Social Login", {
             position: toast.POSITION.TOP_RIGHT,
           });
           setStatus({ loading: false });

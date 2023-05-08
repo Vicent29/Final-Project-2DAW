@@ -88,6 +88,7 @@ class ProfileUsr(TimestampedModel, models.Model):
     biography = models.CharField(
         max_length=100, blank=True, default='User active with rent bikes')
     notis = models.IntegerField(blank=True, default=0)
+    socialUser= models.BooleanField(blank=True, default=False)
 
     class Meta:
         verbose_name_plural = 'Profiles'

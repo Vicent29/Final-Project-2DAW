@@ -23,6 +23,7 @@ def checkChatIDpy(id, text):
 
 
 class UserView(viewsets.GenericViewSet):
+
     def getOneUser(self, request, id):
         user = User.objects.get(id=id)
         user_serializer = UserSerializer(user, many=False)
@@ -106,7 +107,7 @@ class UserRegLog(viewsets.GenericViewSet):
         return Response(serializer, status=status.HTTP_200_OK)
 
     def login(self, request):
-        permission_classes = (AllowAny,)
+        permission_classes = (AllowAny)
 
         email = request.data['email']
         password = request.data['password']
@@ -117,6 +118,24 @@ class UserRegLog(viewsets.GenericViewSet):
         }
 
         serializer = UserSerializer.login(serializer_context)
+        return Response(serializer, status=status.HTTP_200_OK)
+    
+    def socialLogin(self, request):
+        uid = request.data['uid']
+        email = request.data['email']
+        first_name = request.data['first_name']
+        last_name = request.data['last_name']
+        img_user = request.data['img_user']
+
+        serializer_context = {
+            'uid': uid,
+            'email': email,
+            'first_name': first_name,
+            'last_name': last_name,
+            'img_user': img_user
+        }
+
+        serializer = UserSerializer.socialLogin(serializer_context)
         return Response(serializer, status=status.HTTP_200_OK)
 
 

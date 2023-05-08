@@ -20,7 +20,8 @@ class UserSerializer(serializers.ModelSerializer):
                 'type': instance.type,
                 'avatar': instance.avatar,
                 'desc': instance.desc,
-                'noti': instance.noti
+                'noti': instance.noti,
+                'socialUser': instance.socialUser
             },
             'token': instance.token,
             'rftoken': instance.refresh_token,
@@ -42,6 +43,8 @@ class UserSerializer(serializers.ModelSerializer):
             user.avatar = profile.avatar
             user.desc = profile.biography
             user.noti = profile.notis
+            user.socialUser =  profile.socialUser
+
         return UserSerializer.to_user(user)
 
     def allchatID():
@@ -73,6 +76,7 @@ class UserSerializer(serializers.ModelSerializer):
                 user.avatar = profile.avatar
                 user.desc = profile.biography
                 user.noti = profile.notis
+                user.socialUser =  profile.socialUser
         return UserSerializer.to_user(user)
 
     def login(context):
@@ -87,6 +91,7 @@ class UserSerializer(serializers.ModelSerializer):
                 user.avatar = profile.avatar
                 user.desc = profile.biography
                 user.noti = profile.notis
+                user.socialUser =  profile.socialUser
             if user.check_password(password):
                 return UserSerializer.to_user(user)
             else:
@@ -95,6 +100,37 @@ class UserSerializer(serializers.ModelSerializer):
 
         except User.DoesNotExist:
             return "email not registered"
+    
+    def socialLogin(context):
+        email = context['email']
+        first_name = context['first_name']
+        last_name = context['last_name']
+        img_user = context['img_user']
+        
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = User.objects.create_user(first_name, last_name, email)
+            user.save()
+        if user:
+            data_profile_serialized = ProfileSerializer(data={'user': user.id, 'avatar':img_user, 'socialUser': True})
+            if data_profile_serialized.is_valid(raise_exception=True):
+                profile = data_profile_serialized.save()
+                user.avatar = profile.avatar
+                user.desc = profile.biography
+                user.noti = profile.notis
+                user.socialUser= True
+                return UserSerializer.to_user(user)
+            else: 
+                return "Error with create profile"
+        else:
+            if user:
+                profile = ProfileUsr.objects.get(user_id=user.id)
+                user.avatar = profile.avatar
+                user.desc = profile.biography
+                user.noti = profile.notis
+                user.socialUser = True
+                return UserSerializer.to_user(user)
 
     def updateUser(current_user, context):
         user = User.objects.get(id=current_user.id)
@@ -129,6 +165,7 @@ class UserSerializer(serializers.ModelSerializer):
         user_save.avatar = profile_save.avatar
         user_save.desc = profile_save.biography
         user_save.noti = profile_save.notis
+        user_save.socialUser =  profile_save.socialUser
         return UserSerializer.to_user(user_save)
 
     def checkChatID(context):
@@ -166,7 +203,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProfileUsr
-        fields = ('id', 'user', 'avatar', 'biography')
+        fields = ('id', 'user', 'avatar', 'biography', 'socialUser')
 
     def to_profile(instance):
         return {
@@ -174,4 +211,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'user': instance.user_id,
             'avatar': instance.avatar,
             'biography': instance.biography,
+            'socialUser': instance.socialUser
         }
