@@ -12,7 +12,7 @@ import { NoAuthGuard } from './services/guards/AuthGuard';
 import { AuthGuard } from './services/guards/AuthGuard';
 
 // import logo from './logo.svg';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import React, { Suspense } from 'react';
 import './App.css';
 
@@ -45,7 +45,7 @@ const Profile = React.lazy(() => import("./pages/User/Profile"))
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <AuthContextProvider>
           <Header />
           <ToastContainer />
@@ -75,7 +75,7 @@ function App() {
             </Routes>
           </StationsContextProvider>
         </AuthContextProvider>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
