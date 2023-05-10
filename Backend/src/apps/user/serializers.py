@@ -44,8 +44,8 @@ class UserSerializer(serializers.ModelSerializer):
             user.desc = profile.biography
             user.noti = profile.notis
             user.socialUser =  profile.socialUser
-
         return UserSerializer.to_user(user)
+
 
     def allchatID():
         chat_ids = User.objects.filter(
@@ -112,25 +112,26 @@ class UserSerializer(serializers.ModelSerializer):
         except User.DoesNotExist:
             user = User.objects.create_user(first_name, last_name, email)
             user.save()
-        if user:
-            data_profile_serialized = ProfileSerializer(data={'user': user.id, 'avatar':img_user, 'socialUser': True})
-            if data_profile_serialized.is_valid(raise_exception=True):
-                profile = data_profile_serialized.save()
-                user.avatar = profile.avatar
-                user.desc = profile.biography
-                user.noti = profile.notis
-                user.socialUser= True
-                return UserSerializer.to_user(user)
-            else: 
-                return "Error with create profile"
-        else:
             if user:
-                profile = ProfileUsr.objects.get(user_id=user.id)
-                user.avatar = profile.avatar
-                user.desc = profile.biography
-                user.noti = profile.notis
-                user.socialUser = True
-                return UserSerializer.to_user(user)
+                data_profile_serialized = ProfileSerializer(data={'user': user.id, 'avatar':img_user, 'socialUser': True})
+                if data_profile_serialized.is_valid(raise_exception=True):
+                    profile = data_profile_serialized.save()
+                    user.avatar = profile.avatar
+                    user.desc = profile.biography
+                    user.noti = profile.notis
+                    user.socialUser= True
+                    return UserSerializer.to_user(user)
+                else: 
+                    return "Error with create profile"
+            else:
+                return "Error with create user"
+        if user:
+            profile = ProfileUsr.objects.get(user_id=user.id)
+            user.avatar = profile.avatar
+            user.desc = profile.biography
+            user.noti = profile.notis
+            user.socialUser = True
+            return UserSerializer.to_user(user)
 
     def updateUser(current_user, context):
         user = User.objects.get(id=current_user.id)

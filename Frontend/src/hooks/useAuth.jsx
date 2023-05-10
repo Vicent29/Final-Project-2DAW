@@ -60,7 +60,6 @@ export function useAuth() {
           ? providerGithub
           : null;
 
-
       signInWithPopup(auth, provider)
         .then((info) => {
             let uid = info.user.uid;

@@ -14,9 +14,6 @@ from src.apps.user.models import User, ProfileUsr
 from src.apps.user.serializers import UserSerializer, ProfileSerializer
 from rest_framework.views import APIView
 
-# Create your views here.
-# @api_view(['GET', 'POST', 'DELETE'])
-
 
 def checkChatIDpy(id, text):
     return UserSerializer.checkChatIDpy(id, text)
