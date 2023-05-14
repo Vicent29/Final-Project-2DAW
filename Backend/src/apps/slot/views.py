@@ -19,6 +19,7 @@ from rest_framework.views import APIView
 # @api_view(['GET', 'POST', 'DELETE'])
 
 class SlotView(viewsets.GenericViewSet):
+    # permission_classes = (AllowAny)
 
     def getSlots(self, request):
         slot = Slot.objects.all()
@@ -36,7 +37,7 @@ class SlotView(viewsets.GenericViewSet):
 
 
 class OnlyAdmin(viewsets.GenericViewSet):
-    permission_classes = [IsAuthenticated, IsAdmin]
+    # permission_classes = [IsAuthenticated, IsAdmin]
 
     def createSlot(self, request):
         slot_data = request.data
