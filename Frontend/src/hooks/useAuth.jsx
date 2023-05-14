@@ -7,6 +7,8 @@ import JWTService from '../services/JWTService';
 
 import { toast } from 'react-toastify';
 
+import { auth, providerGoogle, providerFacebook, providerTwitter, providerGithub } from "../services/firebase/firebase.config";
+import {signInWithPopup} from "firebase/auth";
 
 export function useAuth() {
     const navigate = useNavigate();
@@ -44,6 +46,49 @@ export function useAuth() {
                 }
             });
     }, [setStatus]);
+
+
+    const socialLogin = (rrss) => {
+      let provider =
+        rrss == "google"
+          ? providerGoogle
+          : rrss == "facebook"
+          ? providerFacebook
+          : rrss == "twitter"
+          ? providerTwitter
+          : rrss == "github"
+          ? providerGithub
+          : null;
+
+      signInWithPopup(auth, provider)
+        .then((info) => {
+            let uid = info.user.uid;
+            let email = info.user.email;
+            let first_name= info.user.displayName.split(" ")[0];
+            let last_name = info.user.displayName.split(" ");
+            last_name = last_name.slice(1).join(" ");
+            let img_user = info.user.photoURL;
+
+            let infoUser = {
+                uid: uid,
+                email: email,
+                first_name: first_name,
+                last_name: last_name,
+                img_user: img_user
+            };
+            AuthService.loginSocialLogin(infoUser)
+                .then((res) => {
+                    setUserLoged(res);
+                })
+                .catch(() => {
+                    toast.error("Social Login is disaable", {
+                        position: toast.POSITION.TOP_RIGHT,
+                    });
+                    setStatus({ loading: false });
+                });
+        })
+    };
+
 
     const setUserLoged = useCallback((res) => {
         setStatus({ loading: false, error: false });
@@ -140,7 +185,7 @@ export function useAuth() {
         }); 
     },[])
 
-    return { status, signup, signin, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
+    return { status, signup, signin, socialLogin, setUserLoged, logout, updateUser, resetNotis, loadUser, checkAdmin, setJWT, setUser, getUsers,users,setUsers, changeStatus }
 }
 
 
