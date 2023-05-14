@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'uuid', 'first_name', 'last_name',
-                  'email', 'is_active', 'type')
+                  'email', 'is_active', 'type', 'balance')
 
     def to_user(instance):
         return {
@@ -21,7 +21,8 @@ class UserSerializer(serializers.ModelSerializer):
                 'avatar': instance.avatar,
                 'desc': instance.desc,
                 'noti': instance.noti,
-                'socialUser': instance.socialUser
+                'socialUser': instance.socialUser,
+                'balance': instance.balance
             },
             'token': instance.token,
             'rftoken': instance.refresh_token,
