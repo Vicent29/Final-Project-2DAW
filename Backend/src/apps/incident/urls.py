@@ -10,6 +10,4 @@ urlpatterns = [
     path('IncOthers', Incident.as_view({'post': 'createIOther'})),
     path('allInc', OnlyAdmin.as_view({'get': 'getAllIncidents'})),
     path('closeInc', OnlyAdmin.as_view({'post': 'closeIncidence'})),
-    
-    # path('restaurants', GetRestaurants.as_view()),
 ]
