@@ -7,13 +7,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import (
     AllowAny, IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser,)
 from src.apps.core.permissions import IsAdmin
-
-
 from src.apps.rent.models import Rent
 from src.apps.rent.serializers import RentSerializer
-
-# Create your views here.
-# @api_view(['GET', 'POST', 'DELETE'])
 
 
 class RentView(viewsets.GenericViewSet):
@@ -24,15 +19,7 @@ class RentView(viewsets.GenericViewSet):
         rent_serializer = RentSerializer(rent, many=False)
         return JsonResponse(rent_serializer.data, safe=False)
 
-    # def createRent(self, request):
-    #     rent_data = request.data
-    #     rent_serializer = RentSerializer(data=rent_data)
-    #     if (rent_serializer.is_valid(raise_exception=True)):
-    #         rent_serializer.save()
-    #     return JsonResponse(rent_serializer.data)
-
     def createRent(self, request):
-        # return JsonResponse("hola", safe=False)
         return JsonResponse(RentSerializer.create_rent(context=request.data, request=request), safe=False)
 
     def closeRent(self, request, id):
@@ -43,7 +30,6 @@ class RentView(viewsets.GenericViewSet):
             'id_slot': request.data['slot'],
         }
         serializer = RentSerializer.close_rent(context=serializer_context)
-        # return Response(serializer, content_type="application/json")
         return Response(serializer)
 
     def getRentByUser(self, request):

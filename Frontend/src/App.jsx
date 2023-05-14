@@ -11,7 +11,6 @@ import AdminGuard from './services/guards/AdminGuard';
 import {NoAuthGuard} from './services/guards/AuthGuard';
 import {AuthGuard} from './services/guards/AuthGuard';
 
-// import logo from './logo.svg';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import React, {Suspense} from 'react';
 import './App.css';

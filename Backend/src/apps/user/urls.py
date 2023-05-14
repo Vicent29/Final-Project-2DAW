@@ -2,6 +2,7 @@ from django.urls import path
 from src.apps.user.views import UserView, UserRegLog, OnlyAdmin,OnlyUser,ProfileView
 
 urlpatterns = [
+
     path('user', UserView.as_view({'post': 'createUser'})),
     path('usertk', OnlyUser.as_view({'get': 'getUserTk'})),
     path('auser', OnlyAdmin.as_view({'get': 'getUsers'})),
@@ -10,6 +11,7 @@ urlpatterns = [
     path('user/<int:id>', UserView.as_view({'get': 'getOneUser'})),
     path('register', UserRegLog.as_view({'post': 'register'})),
     path('login', UserRegLog.as_view({'post': 'login'})),
+    path('socialLogin', UserRegLog.as_view({'post': 'socialLogin'})),
     path('user/update', OnlyUser.as_view({'put': 'updateUser'})),
     path('logout', OnlyUser.as_view({'post': 'logout'})),
     path('allchatid', OnlyAdmin.as_view({'get': 'allchatID'})),
@@ -18,5 +20,4 @@ urlpatterns = [
 
     path('profile', ProfileView.as_view( {'get': 'getProfiles', 'post': 'createProfile'})),
     path('profile/<int:id>', ProfileView.as_view({'get': 'getOneProfile', 'delete': 'deleteProfile'})),
-    
 ]

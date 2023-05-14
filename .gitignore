@@ -32,3 +32,6 @@ yarn-error.log*
 /playwright/.cache/
 ./tests
 **/secret.js
+*/bin
+package-lock.json
+
