@@ -66,7 +66,7 @@ export default function UpdateUser() {
       setCheck({...check, chat_id: '' });
       await navigator.clipboard.writeText(form.chatID);
       updateUser(form);
-      window.open("https://web.telegram.org/z/#5944160111", "_blank");
+      window.open("https://web.telegram.org/k/#@GreenWheels_bot", "_blank");
     };
   
   // Control Regex errors

@@ -29,10 +29,12 @@ export function useTel() {
     const checkChatID = useCallback(async (res) => {
         await AuthService.checkChatID(res)
             .then(({ data }) => {
-                sendMessage(res.chatID, data)
+                console.log("FUNCIONA");
+                // sendMessage(res.chatID, data)
             })
             .catch(({ response }) => {
-                sendMessage(res.chatID, response.data[0])
+                console.log("ERRO TEL");
+                // sendMessage(res.chatID, response.data[0])
             })
     }, [])
     return { sendMessage, allchatid, checkChatID }
