@@ -27,3 +27,4 @@ yarn-error.log*
 ./tests
 **/secret.js
 */package-lock.json
+*/greeenwheels-linux-x64
