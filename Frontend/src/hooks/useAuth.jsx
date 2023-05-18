@@ -137,9 +137,15 @@ export function useAuth() {
                 setStatus({ loading: false, error: false });
                 setUser(response.data.user)
                 JWTService.saveToken(response.data.token, response.data.rftoken);
-                toast.success(response.data.user.first_name + " has been updated successfully", {
-                    position: toast.POSITION.TOP_RIGHT
-                });
+                if (data.balance) {
+                    toast.success(" Your balance has been updated to " + response.data.user.balance + "€", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }else {
+                    toast.success(response.data.user.first_name + " has been updated successfully", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
             }).catch((error) => {
                 setStatus({ loading: false, error: true });
                 if (error.response.data == "Email exist") {

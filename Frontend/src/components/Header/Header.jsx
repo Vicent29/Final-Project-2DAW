@@ -15,8 +15,8 @@ export default function Header() {
     const { user, isAdmin } = useContext(AuthContextProvider)
     const links = ["HOME"]
     user ? isAdmin ? links.push( "STATION", "SLOT", "BIKE", "USER", "LOGOUT") : links.push("LOGOUT") : links.push("SIGNIN", "SIGNUP");
-    const { logout } = useAuth()
-    const [show, setShow] = useState(false)
+    const { logout } = useAuth();
+    const [show, setShow] = useState(false);
 
     const changeCN = (item) => {
         return alocation.pathname.replace('/', '') === item.toLowerCase() ? "menu-link is-active" : "menu-link";
@@ -29,15 +29,26 @@ export default function Header() {
     return (
         <>
             <div className="header" id="header">
-                <div className="logo"><Link to="Home"><img src="./assets/logos/logGreenWheels.png" alt="greenwheels" width="200vh" /></Link></div>
+                <div className="logo">
+                    <Link to="Home">
+                        {user && (
+                            <img src="./assets/logos/logGreenWheels.png" alt="greenwheels" width="200vh" />
+                        )}
+                    </Link>
+                    </div>
                 <div className="header-profile">
                     {user && (
                         <>
                             <Notifications />
-                            <Link to="profile"><img className="profile-img" src={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" /></Link>
+                            <Link to="profile">
+                                <img className="profile-img" src={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" />
+                            </Link>
                         </>
                     )}
                 </div>
+                {user && ( 
+                    <span className="priceUser">{ user.balance }€</span>
+                )}
                 <div className="header-menu">
                     {isAdmin && (
                         <Announce />
@@ -48,6 +59,7 @@ export default function Header() {
                     </div>
                 </div>
             </div>
+            
             {show && (
                 <div className="d-flex flex-col justify-end hd:hidden bg-dark muestra" id="header">
                     {print.map((p) => {

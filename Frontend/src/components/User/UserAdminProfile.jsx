@@ -16,12 +16,6 @@ export default function UserAdminProfile() {
         }))
 
     }
-    // const close = async (rent) => {
-    //     console.log(rent);
-    //     console.log(getValues().slot);
-    //     await closeRent(rent.id, { "bike": rent.bike, "slot": getValues().slot })
-    //     getRentsByUser();
-    // }
 
     return (
         <>

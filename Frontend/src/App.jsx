@@ -96,6 +96,8 @@ function App() {
                                        element={<Suspense fallback={<SpinnerLoading/>}><Incident/></Suspense>}/>
                                 <Route path="profile"
                                        element={<Suspense fallback={<SpinnerLoading/>}><Profile/></Suspense>}/>
+                                <Route path="profileStripe"
+                                       element={<Suspense fallback={<SpinnerLoading/>}><Profile/></Suspense>}/>
                             </Route>
                         </Routes>
                     </StationsContextProvider>

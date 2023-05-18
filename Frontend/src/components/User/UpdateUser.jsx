@@ -264,17 +264,22 @@ export default function UpdateUser() {
                 <div className="p_avatar btn_profile bg-white" onClick={ClickTelegram}>
                   <img  src="https://i.postimg.cc/L5J3J8kf/telegram.png" alt="Icon Telegram" className="avatar"/>  
                 </div>
-                <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : true })} }c>
+                <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : true, opt_balance: false })} }>
                   <img  src="https://i.postimg.cc/SKpnJLj4/image-1.png" alt="Icon incidences" className="avatar"/>  
                 </div>
                 {isAdmin && (
-                  <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : false })} }c>
-                    <img  src="https://i.postimg.cc/cLF8W2MP/list-incidents-people.png" alt="Icon List Rent" className="avatar"/>  
+                  <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : false, opt_balance: false })} }>
+                    <img  src="https://i.postimg.cc/cLF8W2MP/list-incidents-people.png" alt="Icon Incident Admin" className="avatar"/>  
                   </div>
                 )}
                 {!isAdmin && (
-                  <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : false })} }c>
+                  <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : false, opt_balance: false })} }>
                     <img  src="https://i.postimg.cc/Pf159vqv/image.png" alt="Icon List Rent" className="avatar"/>  
+                  </div>
+                )}
+                {!isAdmin && (
+                  <div className="p_avatar btn_profile ml-9" onClick={() => {setUser({...user, opt_profile : false, opt_balance: true })} }>
+                    <img  src="https://i.postimg.cc/qq7gKCdk/monedero.png" alt="Icon Balance" className="avatar"/>  
                   </div>
                 )}
               </div>

@@ -23,10 +23,11 @@ export function AuthContextProvider({ children }) {
     }, [])
 
     const loadUser = async () => {
+        let infoUser= [];
         await AuthService.getUserTk()
             .then(({ data }) => {
-                setUser(data.user)
-                setJWT(data.token)
+                setUser(data.user);
+                setJWT(data.token);
                 JWTService.saveToken(data.token, data.rftoken)
             })
             .catch(({ error }) => {
