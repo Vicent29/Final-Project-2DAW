@@ -76,7 +76,7 @@ export const Payments = () => {
             <div className="flex justify-center mt-3">
                 <img className="w-16" src="https://i.postimg.cc/sg9Hkqy1/5.png"/>
             </div>
-            <button className="bg-[#F4F5FA] px-4 py-3 rounded-full  border border-[#F0F0F6] shadow-xl mt-4" onClick={() => addMoney("price_1N8mPrGRV9kK9sofoGeCEvTS", 5)}>Add money</button>
+            <button id='5€' className="bg-[#F4F5FA] px-4 py-3 rounded-full  border border-[#F0F0F6] shadow-xl mt-4" onClick={() => addMoney("price_1N8mPrGRV9kK9sofoGeCEvTS", 5)}>Add money</button>
           </div>
         </div>
 

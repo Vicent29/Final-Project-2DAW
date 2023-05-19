@@ -31,9 +31,7 @@ export default function Header() {
             <div className="header" id="header">
                 <div className="logo">
                     <Link to="Home">
-                        {user && (
                             <img src="./assets/logos/logGreenWheels.png" alt="greenwheels" width="200vh" />
-                        )}
                     </Link>
                     </div>
                 <div className="header-profile">
@@ -41,7 +39,9 @@ export default function Header() {
                         <>
                             <Notifications />
                             <Link to="profile">
-                                <img className="profile-img" src={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" />
+                                {user && (
+                                    <img className="profile-img" src={user.avatar ? user.avatar : 'https://i.postimg.cc/T3g6d9nk/image.png'} alt="Avatar user" />
+                                )}
                             </Link>
                         </>
                     )}

@@ -36,7 +36,7 @@ export default function UserRentProfile() {
                             <th className="flex justify-center items-center">
                                 <div className="w-50 flex justify-center items-center">
                                     <div className="flex flex-col max-w-md">
-                                        <button className="text-white bg-[#347c10]  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={() => {setUser({...user, opt_profile : false, opt_balance: true })} }>Deposit Money</button>
+                                        <button id='addMoney' className="text-white bg-[#347c10]  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={() => {setUser({...user, opt_profile : false, opt_balance: true })} }>Deposit Money</button>
                                     </div>
                                 </div>
                             </th>
@@ -57,7 +57,7 @@ export default function UserRentProfile() {
                                                         return <option key={slot.id} value={slot.id} className="text-black">{slot.id} {slot.slug}</option>
                                                     })}
                                                 </select>
-                                                <button className="btn btn-primary ml-4" onClick={() => close(rent)}>Leave</button>
+                                                <button id="leaveBike" className="btn btn-primary ml-4" onClick={() => close(rent)}>Leave</button>
                                             </td>
                                         </>
                                         :

@@ -89,7 +89,6 @@ export function useAuth() {
         })
     };
 
-
     const setUserLoged = useCallback((res) => {
         setStatus({ loading: false, error: false });
         JWTService.saveToken(res.data.token, res.data.rftoken);
