@@ -1,6 +1,7 @@
 import {login, regsiter} from '../page-objects/acount.js'
 describe('Check that new feature Incident', () => {
   it('Create a incident', () => {
+    cy.viewport(1680, 940);
     login();
     cy.visit('http://localhost:3000/#/profile');
     cy.get('[alt*="Icon incidences"]').click({ force: true });

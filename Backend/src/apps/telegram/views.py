@@ -12,10 +12,10 @@ logger = logging.getLogger(__name__)
 
 
 def start_bot():
-    if __name__ == '__main__':
-        updater = Updater(os.getenv('TOKEN_TEL'), use_context=True)
-        dispatcher = updater.dispatcher
-        message_handler = MessageHandler(Filters.text, handle_message)
-        dispatcher.add_handler(message_handler)
-        updater.start_polling()
+    # if __name__ == '__main__':
+    updater = Updater(os.getenv('TOKEN_TEL'), use_context=True)
+    dispatcher = updater.dispatcher
+    message_handler = MessageHandler(Filters.text, handle_message)
+    dispatcher.add_handler(message_handler)
+    updater.start_polling()
     return HttpResponse('Bot started.')
