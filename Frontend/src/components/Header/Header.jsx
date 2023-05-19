@@ -46,7 +46,7 @@ export default function Header() {
                         </>
                     )}
                 </div>
-                {user && ( 
+                {user && !isAdmin && ( 
                     <span className="priceUser">{ user.balance }€</span>
                 )}
                 <div className="header-menu">
