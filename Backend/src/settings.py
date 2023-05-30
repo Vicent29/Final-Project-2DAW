@@ -13,11 +13,11 @@ SECRET_KEY = 'django-insecure-6%7t1madsstg1u2f&sd$q4vt^!v42fp^53+x*7y7-!q0g%wz3u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", 'greenwheels.francecentral.cloudapp.azure.com']
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
+    'http://localhost:3000', 'http://greenwheels.francecentral.cloudapp.azure.com:3000'
 )
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'src.apps.rent',
     'src.apps.incident',
     'src.apps.notifications',
-    'src.apps.telegram',
+    # 'src.apps.telegram',
     'corsheaders',
 ]
 
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': env('DB_MYSQL'),
         'USER': env('USER'),
         'PASSWORD': env('PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }

@@ -54,8 +54,8 @@ export const Payments = () => {
         },
       ],
       mode: "payment",
-      successUrl: `http://localhost:3000/#/profileStripe`,
-      cancelUrl: `http://localhost:3000`,
+      successUrl: `http://greenwheels.francecentral.cloudapp.azure.com:3000/#/profileStripe`,
+      cancelUrl: `http://greenwheels.francecentral.cloudapp.azure.com:3000`,
     });
     if (error) {
         toast.error("The charge of " + price + "€ to the account couldn't be made", {

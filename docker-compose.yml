@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  db:
+    container_name: greenwheels
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: greenwheels
+    networks:
+      - mynetwork
+
+  backend:
+    restart: always
+    build: ./Backend
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    command: |
+      sh -c "source ./bin/activate && \
+      pip install -r requirements.txt && \
+      python manage.py makemigrations && \
+      python manage.py migrate && \
+      python manage.py runserver 0.0.0.0:3001"
+    networks:
+      - mynetwork
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "3000:3000"
+    command: npm start
+    volumes:
+      - ./Frontend:/app
+    networks:
+      - mynetwork
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      PMA_PORT: 3306
+      PMA_HOST: greenwheels
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    ports:
+      - "3002:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
