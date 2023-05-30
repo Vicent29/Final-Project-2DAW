@@ -18,10 +18,7 @@ function AdminGuard() {
                 setPrint(<Navigate to="/" />)
             })
     }, [])
-
     return (print)
-    // return (admin ? <Outlet /> : <Navigate to="/"/>)
-
 }
 
 export default AdminGuard;

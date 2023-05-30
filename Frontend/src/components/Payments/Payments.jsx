@@ -34,9 +34,7 @@ export const ControlBalanceStripe = () => {
 let stripePromise;
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(
-      "pk_test_51N54ZjGRV9kK9sofByVWg84nG0zjgfyql5eBA9sfbYSZsOESDc7TZtmsyFgFeNxHunXwXDdA9esmeFy1yWW1qIjT00pvAbVCkB"
-    );
+    stripePromise = loadStripe(KEY_STRPIE);
   }
   return stripePromise;
 };
