@@ -2,10 +2,11 @@ import { useState } from "react"
 
 export default function UserLine({ user, changeStatus }) {
     const [toggle, setToggle] = useState(user.is_active)
+    console.log(user);
     return (
         <>
             <td className="align-items-center justify-center">{user.id}</td>
-            <td className='align-items-center justify-center'><img src={user.avatar ? user.avatar : "https://i.postimg.cc/T3g6d9nk/image.png"} alt="img_bike_rent" className='img_bike_admin rounded-circle img-fluid' /></td>
+            <td className='align-items-center justify-center'><img src={user.avatar ? user.avatar : "https://i.postimg.cc/T3g6d9nk/image.png"} alt="img_avatar" className='img_bike_admin rounded-circle img-fluid' /></td>
             <td className="align-items-center justify-center">{user.first_name } {user.last_name}</td>
             <td className="align-items-center justify-center">{user.email}</td>
             <td className="align-items-center justify-center">

@@ -101,7 +101,7 @@ export default function Incident() {
                                         <label className="block text-gray-700 text-sm font-bold mb-2">
                                             Description
                                         </label>
-                                        <input name="" id="" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                        <input name="" id="descIncident" className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                             {...register("desc", { required: true })} placeholder="don't works" autoComplete="off" required />
                                     </div>
                                 )}
@@ -109,11 +109,11 @@ export default function Incident() {
                                     <button type='button' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                         onClick={(e) => handleStep(-1)}>Prev</button>
                                     {step !== 2 && (
-                                        <button type='button' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        <button id='next' type='button' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                             onClick={handleSubmit(newPage)}>Next</button>
                                     )}
                                     {step === 2 && (
-                                        <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        <button id='sendIncident' type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                             onClick={handleSubmit(createIncidence)}>Send</button>
                                     )}
                                 </div>

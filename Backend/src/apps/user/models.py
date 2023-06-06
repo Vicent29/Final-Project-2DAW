@@ -43,6 +43,8 @@ class User(AbstractBaseUser, TimestampedModel, models.Model):
     is_active = models.BooleanField(blank=True, default=True)
     type = models.CharField(max_length=30, blank=True, default="client")
     chatID = models.CharField(max_length=100, blank=True, default="")
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
 
     objects = UserManager()
 
@@ -88,6 +90,7 @@ class ProfileUsr(TimestampedModel, models.Model):
     biography = models.CharField(
         max_length=100, blank=True, default='User active with rent bikes')
     notis = models.IntegerField(blank=True, default=0)
+    socialUser= models.BooleanField(blank=True, default=False)
 
     class Meta:
         verbose_name_plural = 'Profiles'

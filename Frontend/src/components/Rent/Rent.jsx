@@ -10,7 +10,7 @@ export default function Rent({ bike, changestatus, createRnt }) {
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{bike.slug}</h5>
                     <h6 className="mb-2 text-xl font-bold tracking-tight text-white">You want to reserve it?</h6>
                     <div className='d-flex justify-evenly'>
-                        <button type='button' className='btn btn-outline-info' onClick={(e) => { createRnt({ "bike": bike.id, "slug": bike.slug }) }}>Confirm</button>
+                        <button id='confirmRent' type='button' className='btn btn-outline-info' onClick={(e) => { createRnt({ "bike": bike.id, "slug": bike.slug }) }}>Confirm</button>
                         <button type='button' className='btn btn-outline-danger' onClick={changestatus}>Cancel</button>
                     </div>
                 </div>

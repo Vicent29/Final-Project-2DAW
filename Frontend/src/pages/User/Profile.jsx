@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import UpdateUser from "../../components/User/UpdateUser";
-import UserRentProfile from '../../components/User/UserRentProfile';
-import UserAdminProfile from '../../components/User/UserAdminProfile';
-import AuthContextProvider from '../../context/AuthContext';
+import UserRentProfile from "../../components/User/UserRentProfile";
+import UserAdminProfile from "../../components/User/UserAdminProfile";
+import AuthContextProvider from "../../context/AuthContext";
 import Incident from "../../components/Incident/Incident";
+import {Payments, ControlBalanceStripe} from "../../components/Payments/Payments";
 
 export default function Profile() {
-  const { isAdmin, user } = useContext(AuthContextProvider)
-
+  const { isAdmin, user } = useContext(AuthContextProvider);
   return (
     <>
       <section>
@@ -24,13 +24,25 @@ export default function Profile() {
             {!user.opt_profile && (
               <div className="col-lg-8 h-[80vh] overflow-auto">
                 <div className="card mb-4 bg-dark">
-                    {isAdmin && (
-                      <UserAdminProfile />
-                    )}
-                    {!isAdmin && (
+                  {isAdmin && <UserAdminProfile /> }
+                  {!isAdmin && !user.opt_balance && (
+                    <>
+                      <ControlBalanceStripe/>
                       <UserRentProfile />
-                    )}
+                    </>
+                  )}
                 </div>
+
+                {/* Balance */}
+                {user.opt_balance && (
+                  <>
+                    <div className="col-lg-12 h-[80vh]">
+                      <div className="card mb-4 bg-black ">
+                        <Payments />
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             )}
             {/* Incident */}

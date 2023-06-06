@@ -17,16 +17,17 @@ export function AuthContextProvider({ children }) {
         async function loadData() {
             await loadUser()
             await checkAdmin()
-            setLoading(false)
+            setLoading(false);
         }
         loadData();
     }, [])
 
     const loadUser = async () => {
+        let infoUser= [];
         await AuthService.getUserTk()
             .then(({ data }) => {
-                setUser(data.user)
-                setJWT(data.token)
+                setUser(data.user);
+                setJWT(data.token);
                 JWTService.saveToken(data.token, data.rftoken)
             })
             .catch(({ error }) => {
@@ -40,14 +41,13 @@ export function AuthContextProvider({ children }) {
         JWTService.destroyToken();
         await AuthService.getUserTk()
             .then(({ data }) => {
-                console.log(data);
-                setUser(data.user)
-                setJWT(data.token)
-                localStorage.setItem('token', data.token)
-                window.location.reload(false)
+                setUser(data.user);
+                setJWT(data.token);
+                localStorage.setItem('token', data.token);
+                window.location.reload(false);
             })
             .catch(({ response }) => {
-                logout()
+                logout();
             });
     }
 

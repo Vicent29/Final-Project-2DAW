@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRent } from "../../hooks/useRent";
 import { useSlots } from "../../hooks/useSlots";
+import AuthContextProvider from '../../context/AuthContext'
 import "./User.scss";
+
 
 export default function UserRentProfile() {
     const { rents, getRentsByUser, closeRent } = useRent();
     const { slots, setSlots, getSlotsnoBike } = useSlots();
     const [valueslot, setSlotValue] = useState();
     const { register, handleSubmit, getValues } = useForm();
+    const { user, setUser } = useContext(AuthContextProvider);
 
     useEffect(() => {
         getRentsByUser();
@@ -16,8 +19,6 @@ export default function UserRentProfile() {
     }, [])
 
     const close = async (rent) => {
-        console.log(rent);
-        console.log(getValues().slot);
         await closeRent(rent.id, { "bike": rent.bike, "slot": getValues().slot })
         getRentsByUser();
     }
@@ -27,11 +28,18 @@ export default function UserRentProfile() {
         <>
             <div className="">
                 <table className="text-center table table-striped mb-0 table-dark">
-                    <thead className="bord_thead">
+                    <thead className="bord_thead align-baseline">
                         <tr>
                             <th scope="col">Minutes</th>
                             <th scope="col">Bike</th>
                             <th scope="col">Cost</th>
+                            <th className="flex justify-center items-center">
+                                <div className="w-50 flex justify-center items-center">
+                                    <div className="flex flex-col max-w-md">
+                                        <button id='addMoney' className="text-white bg-[#347c10]  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={() => {setUser({...user, opt_profile : false, opt_balance: true })} }>Deposit Money</button>
+                                    </div>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody className="align-baseline">
@@ -49,7 +57,7 @@ export default function UserRentProfile() {
                                                         return <option key={slot.id} value={slot.id} className="text-black">{slot.id} {slot.slug}</option>
                                                     })}
                                                 </select>
-                                                <button className="btn btn-primary" onClick={() => close(rent)}>close rent</button>
+                                                <button id="leaveBike" className="btn btn-primary ml-4" onClick={() => close(rent)}>Leave</button>
                                             </td>
                                         </>
                                         :

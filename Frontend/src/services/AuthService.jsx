@@ -19,6 +19,9 @@ const AuthService = {
     loginUser(data) {
         return http().post(`/api/login`, data)
     },
+    loginSocialLogin(data) {
+        return http().post(`/api/socialLogin`, data)
+    },
     logout() {
         return http().post(`/api/logout`)
     },

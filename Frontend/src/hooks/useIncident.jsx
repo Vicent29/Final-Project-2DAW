@@ -47,7 +47,6 @@ export function useIncident() {
     const closeInc = useCallback(async (data) => {
         await IncidentService.closeInc(data)
             .then(({ data }) => {
-                console.log(data);
                 sendMessage(data.chatID, data.desc)
             })
     }, [])
