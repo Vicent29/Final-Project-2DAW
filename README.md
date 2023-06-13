@@ -8,7 +8,11 @@
 
 # 🔹 GreenWheels:  
 
-Bienvenidos a GreenWheels, es un proyecto desarrollado y diseñado por [`Vicent Esteve`]. Fue creado para cubrir las necesidades de rentas de bicis. Por una parte, los usuarios tendrán la posibilidad de visualizar donde estan las estaciones ya que en la misma página principal tenemos un mapa, también podemos realizar rentas sobre una bici situada en un slot de una estación. Por otra parte, hemos implementado un panel de Administrador que se encarga de gestionar las incidencias, los usuarios, los slots, las estaciones y las bicis. Además de muchas mejoras, por ejemplo podrás recibir notificaciones por Telegram sobre las incidencias que has enviado e informacion sobre problemas u otras cosas de la applicación/estaciones...
+Bienvenidos a GreenWheels, es un proyecto desarrollado y diseñado por [`Vicent Esteve`](https://github.com/Vicent29). Fue creado para cubrir las necesidades de rentas de bicis. Por una parte, los usuarios tendrán la posibilidad de visualizar donde estan las estaciones ya que en la misma página principal tenemos un mapa, también podemos realizar rentas sobre una bici situada en un slot de una estación. Por otra parte, hemos implementado un panel de Administrador que se encarga de gestionar las incidencias, los usuarios, los slots, las estaciones y las bicis. Además de muchas mejoras, por ejemplo podrás recibir notificaciones por Telegram sobre las incidencias que has enviado e informacion sobre problemas u otras cosas de la applicación/estaciones...
+
+# 🔹 Documentación:  
+
+En el enlace [DOCUMENTACIÓN](https://www.django-rest-framework.org)  encontrarás la documentación completa del proyecto GreenWheels, que incluye análisis y requerimientos detallados, así como los aspectos más importantes de la aplicación. Esta documentación te permitirá comprender en detalle cómo se ha planificado y desarrollado el proyecto, brindando información esencial para su implementación exitosa. Es una fuente valiosa para aquellos interesados en conocer los análisis y requisitos clave, así como los aspectos destacados de la aplicación en el contexto del proyecto GreenWheels.
 
 # 🔹 Tecnologías:
 
