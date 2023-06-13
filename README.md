@@ -12,7 +12,7 @@ Bienvenidos a GreenWheels, es un proyecto desarrollado y diseñado por [`Vicent 
 
 # 🔹 Documentación:  
 
-En el enlace [DOCUMENTACIÓN](https://www.django-rest-framework.org)  encontrarás la documentación completa del proyecto GreenWheels, que incluye análisis y requerimientos detallados, así como los aspectos más importantes de la aplicación. Esta documentación te permitirá comprender en detalle cómo se ha planificado y desarrollado el proyecto, brindando información esencial para su implementación exitosa. Es una fuente valiosa para aquellos interesados en conocer los análisis y requisitos clave, así como los aspectos destacados de la aplicación en el contexto del proyecto GreenWheels.
+En el enlace [DOCUMENTACIÓN]([https://www.django-rest-framework.org](https://drive.google.com/file/d/1DZraVh4FEqKe8rpGFifbI6xGvnF49dO-/view?usp=sharing))  encontrarás la documentación completa del proyecto GreenWheels, que incluye análisis y requerimientos detallados, así como los aspectos más importantes de la aplicación. Esta documentación te permitirá comprender en detalle cómo se ha planificado y desarrollado el proyecto, brindando información esencial para su implementación exitosa. Es una fuente valiosa para aquellos interesados en conocer los análisis y requisitos clave, así como los aspectos destacados de la aplicación en el contexto del proyecto GreenWheels.
 
 # 🔹 Tecnologías:
 
